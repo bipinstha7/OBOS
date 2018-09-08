@@ -1,17 +1,17 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Online Burger Ordering System"/>
-  </div>
+	<div class="home">
+		<HelloWorld msg="Welcome to Online Burger Ordering System" />
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+	// @ is an alias to /src
+	import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+	export default {
+	    name: 'home',
+	    components: {
+	        HelloWorld
+	    }
+	}
 </script>
