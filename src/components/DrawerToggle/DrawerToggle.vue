@@ -1,11 +1,12 @@
 <template>
-    <div @Click="ToggleSideDrawer" class="DrawerToggle">
+    <div @click="ToggleSideDrawer" class="DrawerToggle">
         <div></div>
         <div></div>
         <div></div>
     </div> 
 </template>
 <script>
+import { EventBus } from "../../event-bus.js"
 export default {
     data() {
         return {
@@ -15,7 +16,15 @@ export default {
 
     methods: {
         ToggleSideDrawer() {
-            this.showSideDrawer = true
+            // set The value from the event bus so that toggle works
+            EventBus.$on('show-side-drawer', showSideDrawer => {
+                this.showSideDrawer = showSideDrawer
+            })
+
+            this.showSideDrawer = !this.showSideDrawer
+
+            // emit the value to event bus
+            EventBus.$emit('show-side-drawer', this.showSideDrawer)
         }
     }
 }
