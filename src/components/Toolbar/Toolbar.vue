@@ -1,4 +1,4 @@
-7<template>
+<template>
     <header class="Toolbar">
 		<drawer-toggle></drawer-toggle>
 		<burger-logo class="Logo"></burger-logo>
