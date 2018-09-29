@@ -1,10 +1,11 @@
 <template>
     <li class="NavigationItem">
-        <a href="#"> <slot></slot> </a>
-        <!-- <a href="nepal"> <slot name="checkout"></slot> </a> -->
+        <a href="#"> 
+            <slot></slot> 
+        </a>
     </li>
 </template>
-<style lang="scss" scoped>
+<style scoped>
 .NavigationItem {
     margin: 10px 0;
     box-sizing: border-box;
