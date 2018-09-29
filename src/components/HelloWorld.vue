@@ -6,7 +6,6 @@
 		<p>
 			This app is on building phase
 		</p>
-		<h1 class="do-it-always">While doing on different components or bugs or features.</h1>
 		<h2 class="make-branch">Always make respective branch and work on it</h2>
 	</div>
 </template>
@@ -26,10 +25,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.do-it-always {
-	color: white;
-	background: black;
-}
 
 .make-branch {
 	color: blue;
