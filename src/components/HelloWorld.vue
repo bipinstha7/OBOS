@@ -1,7 +1,7 @@
 <template>
 	<div class="hello">
 		<burger-toolbar></burger-toolbar>
-		<backdrop></backdrop>
+		<!-- <backdrop></backdrop> -->
 		<!-- <navigation-items></navigation-items> -->
 		
 		<h1>{{ msg }}</h1>
