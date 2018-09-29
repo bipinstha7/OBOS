@@ -1,7 +1,6 @@
 <template>
 	<div class="hello">
 		<burger-toolbar></burger-toolbar>
-		<!-- <navigation-items></navigation-items> -->
 		
 		<h1>{{ msg }}</h1>
 		<p>
@@ -14,12 +13,10 @@
 
 <script>
 import Toolbar from './Toolbar/Toolbar.vue'
-import NavigationItems from './NavigationItems/NavigationItems.vue'
 export default {
 	name: 'HelloWorld',
 	components: {
 		'burger-toolbar': Toolbar,
-		'navigation-items': NavigationItems
 	},
 	props: {
 		msg: String

@@ -1,4 +1,4 @@
-7<template>
+<template>
     <header class="Toolbar">
 		<drawer-toggle></drawer-toggle>
 		<burger-logo class="Logo"></burger-logo>
@@ -8,7 +8,7 @@
     </header>
 </template>
 <script>
-import DrawerToggle from '../DrawerToggle/DrawerToggle.vue'
+import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle.vue'
 import Logo from '../Logo/Logo.vue'
 import NavigationItems from '../NavigationItems/NavigationItems.vue'
 export default {
@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .Toolbar {
 	height: 56px;
 	width: 100%;
