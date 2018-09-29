@@ -5,15 +5,29 @@
             <router-link to="/about">About</router-link>
         </div>
         <router-view/>
+        <burger-layout>
+            <!-- <burger-builder></burger-builder> -->
+            <h1>This is burger-builder section</h1>
+        </burger-layout>
     </div>
 </template>
+<script>
+    import Layout from './components/Layout/Layout.vue'
+
+    export default {
+        components: {
+            'burger-layout': Layout 
+        }
+    }
+</script>
+
 
 <style lang="scss">
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    // text-align: center;
     color: #2c3e50;
 }
 #nav {
