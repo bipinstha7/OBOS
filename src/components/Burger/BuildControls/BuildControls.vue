@@ -1,0 +1,84 @@
+<template>
+    <div class="BuildControls">
+        <p>Current Price: <strong>Rs. 50</strong> </p>
+        <div v-for="control in controls" :key="control.type">
+            <build-control
+                :label='control.label'
+            ></build-control>
+        </div>
+        <button class="OrderButton">ORDER NOW</button>
+    </div>
+</template>
+<script>
+import BuildControl from './BuildControl/BuildControl.vue'
+export default {
+    name: 'BuildControls',
+    components: {
+        'build-control': BuildControl
+    },
+    data() {
+        return {
+            controls: [
+                { label: 'Salad',  type: 'salad' },
+                { label: 'Bacon',  type: 'bacon' },
+                { label: 'Cheese', type: 'cheese' },
+                { label: 'Meat',   type: 'meat' }
+            ]
+        }
+    }
+}
+</script>
+<style scoped>
+.BuildControls {
+  width: 100%;
+  background: #cf8f2e;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  box-shadow: 0 2px 1px #ccc;
+  margin: auto;
+  padding: 10px 0;
+}
+
+.OrderButton {
+  background-color: #DAD735;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid #966909;
+  color: #966909;
+  font-family: inherit;
+  font-size: 1.2em;
+  padding: 15px 30px;
+  box-shadow: 2px 2px 2px #966909;
+}
+
+.OrderButton:hover, .OrderButton:active {
+  background-color: #A0DB41;
+  border: 1px solid #966909;
+  color: #966909;
+}
+
+.OrderButton:disabled {
+  background-color: #C7C6C6;
+  cursor: not-allowed;
+  border: 1px solid #ccc;
+  color: #888888;
+}
+
+/* .OrderButton:not(:disabled) {
+  animation: enable 0.3s linear;
+} */
+
+@keyframes enable {
+  0% {
+      transform: scale(1);
+  }
+  60% {
+      transform: scale(1.1);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+</style>
+
