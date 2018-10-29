@@ -2,21 +2,25 @@
     <div id="app">
         <div id="nav">
             <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link>
+            <!-- <router-link to="/about">About</router-link> -->
         </div>
-        <router-view/>
+        <!-- <router-view/> -->
         <burger-layout>
-            <!-- <burger-builder></burger-builder> -->
-            <h1>This is burger-builder section</h1>
+            <burger-builder></burger-builder>
+            <!-- <burger></burger> -->
         </burger-layout>
     </div>
 </template>
 <script>
     import Layout from './components/Layout/Layout.vue'
+    // import Burger from './components/Burger/Burger.vue'
+    import BurgerBuilder from './components/Containers/BurgerBuilder/BurgerBuilder.vue'
 
     export default {
         components: {
-            'burger-layout': Layout 
+            'burger-layout': Layout,
+            // 'burger': Burger,
+            'burger-builder': BurgerBuilder
         }
     }
 </script>
@@ -37,5 +41,10 @@
     .router-link-exact-active {
         color: #42b983;
     }
+}
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0
 }
 </style>
