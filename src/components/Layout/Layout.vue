@@ -20,7 +20,7 @@
     }
 </script>
 <style scoped>
-.Content {
+/* .Content {
     margin-top: 72px;
-}
+} */
 </style>
