@@ -14,9 +14,9 @@
 import BurgerIngredients from "./BurgerIngredients/BurgerIngredients.vue"
 export default {
     name: 'Burger',
-    props: {
-        ingredients: Object
-    },
+    // props: {
+    //     ingredients: Object
+    // },
     components: {
         'burger-ingredients': BurgerIngredients
     },
@@ -33,7 +33,7 @@ export default {
         //     return ingredientKey
         // })
 
-        Object.entries(this.ingredients).map(ingredient => {
+        Object.entries(this.$store.state.ingredients).map(ingredient => {
             if (ingredient[1] > 0) return this.transformedIngredients.push(ingredient[0])
         })
     }
