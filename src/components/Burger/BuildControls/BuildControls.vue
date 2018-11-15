@@ -1,5 +1,5 @@
 <template>
-    <div class="BuildControls">dddd::{{disabledInfo}}
+    <div class="BuildControls">
         <p>Current Price: <strong>Rs.{{this.$store.state.totalPrice}}</strong> </p>
         <div v-for="control in controls" :key="control.type">
             <build-control
@@ -34,7 +34,7 @@ export default {
         }
 
         for (let key in this.$store.state.ingredients) {
-          disabledInfo[key] = disabledInfo[key] <= 0; // gives true or false
+          disabledInfo[key] = disabledInfo[key] <= 0; // true or false
         }
         return disabledInfo
       }
