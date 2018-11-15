@@ -1,6 +1,6 @@
 <template>
-    <div class="BuildControls">d ::{{disableOrderButton}}
-        <p>Current Price: <strong>Rs.{{this.$store.state.totalPrice}}</strong> </p>
+    <div class="BuildControls">
+        <p>Current Price: <strong>Rs. {{this.$store.state.totalPrice}}</strong> </p>
         <div v-for="control in controls" :key="control.type">
             <build-control
                 :type='control.type'
@@ -21,9 +21,9 @@ export default {
         return {
             controls: [
                 { label: 'Salad',  type: 'salad' },
-                { label: 'Bacon',  type: 'bacon' },
                 { label: 'Cheese', type: 'cheese' },
-                { label: 'Meat',   type: 'meat' }
+                { label: 'Meat',   type: 'meat' },
+                { label: 'Bacon',  type: 'bacon' },
             ]
         }
     },
