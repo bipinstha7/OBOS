@@ -19,6 +19,7 @@ export default new Vuex.Store({
             bacon: 40
         },
         totalPrice: 20,
+        purchasing: false,
     },
 
     getters: {
@@ -41,7 +42,7 @@ export default new Vuex.Store({
         removePriceAndIngredients(state, payload) {
             state.ingredients[payload] -= 1
             state.totalPrice -= state.INGREDIENT_PRICES[payload]
-        }
+        },
     },
 
     actions: {
@@ -50,7 +51,7 @@ export default new Vuex.Store({
         },
         removePriceAndIngredients({commit}, payload) {
             commit('removePriceAndIngredients', payload)
-        }
+        },
     }
 
 
