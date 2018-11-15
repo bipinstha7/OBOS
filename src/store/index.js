@@ -13,12 +13,12 @@ export default new Vuex.Store({
             bacon: 0
         },
         INGREDIENT_PRICES: {
-            salad: 0.5,
-            cheese: 0.4,
-            meat: 1.3,
-            bacon: 0.7
+            salad: 10,
+            cheese: 20,
+            meat: 30,
+            bacon: 40
         },
-        totalPrice: 4,
+        totalPrice: 20,
     },
 
     getters: {
@@ -36,9 +36,11 @@ export default new Vuex.Store({
     mutations: {
         addPriceAndIngredients(state, payload) {
             state.ingredients[payload] += 1
+            state.totalPrice += state.INGREDIENT_PRICES[payload]
         },
         removePriceAndIngredients(state, payload) {
             state.ingredients[payload] -= 1
+            state.totalPrice -= state.INGREDIENT_PRICES[payload]
         }
     },
 
