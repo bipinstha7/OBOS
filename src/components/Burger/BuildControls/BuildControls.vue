@@ -1,5 +1,5 @@
 <template>
-    <div class="BuildControls">dddd::{{disabledInfo}}
+    <div class="BuildControls">
         <p>Current Price: <strong>Rs.{{this.$store.state.totalPrice}}</strong> </p>
         <div v-for="control in controls" :key="control.type">
             <build-control
