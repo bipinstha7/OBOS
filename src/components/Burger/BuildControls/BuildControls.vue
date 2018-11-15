@@ -34,7 +34,7 @@ export default {
         }
 
         for (let key in this.$store.state.ingredients) {
-          disabledInfo[key] = disabledInfo[key] <= 0; // gives true or false
+          disabledInfo[key] = disabledInfo[key] <= 0; // true or false
         }
         return disabledInfo
       }
