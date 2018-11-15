@@ -7,11 +7,13 @@
                 :isDisabled="disableLessButton[control.type]"
             ></build-control>
         </div>
-        <button class="OrderButton" :disabled="disableOrderButton">ORDER NOW</button>
+        <button class="OrderButton" :disabled="disableOrderButton" @click="showBackDropAndModal">ORDER NOW</button>
     </div>
 </template>
 <script>
 import BuildControl from './BuildControl/BuildControl.vue'
+import { mapActions } from 'vuex'
+import { EventBus } from '../../../event-bus.js'
 export default {
     name: 'BuildControls',
     components: {
@@ -47,6 +49,13 @@ export default {
         return sum > 0 ? false : true
       }
     },
+    methods: {
+        showBackDropAndModal() {
+            // set the true value to event bus so that backdrop opens
+            EventBus.$emit('show-side-drawer', true)
+            this.$store.state.purchasing = true
+        }
+    }
 }
 </script>
 <style scoped>
