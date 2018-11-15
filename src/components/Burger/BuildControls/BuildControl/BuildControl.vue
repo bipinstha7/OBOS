@@ -1,13 +1,20 @@
 <template>
     <div class="BuildControl">
-        <div class="Label">{{this.label}}</div>
-        <button class="Less">Less</button>
-        <button class="More">More</button>
+        <div class="Label">{{type.charAt(0).toUpperCase() + type.slice(1)}}</div>
+        <button class="Less" @click="removePriceAndIngredients(type)" :disabled="isDisabled">Less</button>
+        <button class="More" @click="addPriceAndIngredients(type)">More</button>
     </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
-    props: ['label']
+    props: ['type', 'isDisabled'],
+    methods: {
+      ...mapActions([
+        'addPriceAndIngredients',
+        'removePriceAndIngredients',
+      ]),
+    }
 }
 </script>
 <style scoped>
