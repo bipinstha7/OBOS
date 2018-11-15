@@ -1,17 +1,19 @@
 <template>
     <div class="BuildControls">
-        <p>Current Price: <strong>Rs.{{this.$store.state.totalPrice}}</strong> </p>
+        <p>Current Price: <strong>Rs. {{this.$store.state.totalPrice}}</strong> </p>
         <div v-for="control in controls" :key="control.type">
             <build-control
                 :type='control.type'
-                :isDisabled="disabledInfo[control.type]"
+                :isDisabled="disableLessButton[control.type]"
             ></build-control>
         </div>
-        <button class="OrderButton">ORDER NOW</button>
+        <button class="OrderButton" :disabled="disableOrderButton" @click="showBackDropAndModal">ORDER NOW</button>
     </div>
 </template>
 <script>
 import BuildControl from './BuildControl/BuildControl.vue'
+import { mapActions } from 'vuex'
+import { EventBus } from '../../../event-bus.js'
 export default {
     name: 'BuildControls',
     components: {
@@ -21,14 +23,14 @@ export default {
         return {
             controls: [
                 { label: 'Salad',  type: 'salad' },
-                { label: 'Bacon',  type: 'bacon' },
                 { label: 'Cheese', type: 'cheese' },
-                { label: 'Meat',   type: 'meat' }
+                { label: 'Meat',   type: 'meat' },
+                { label: 'Bacon',  type: 'bacon' },
             ]
         }
     },
     computed: {
-      disabledInfo() {
+      disableLessButton() {
         const disabledInfo = {
           ...this.$store.state.ingredients
         }
@@ -37,8 +39,23 @@ export default {
           disabledInfo[key] = disabledInfo[key] <= 0; // true or false
         }
         return disabledInfo
+      },
+      disableOrderButton() {
+        let sum = 0
+        for (let key in this.$store.state.ingredients) {
+            sum += this.$store.state.ingredients[key]
+        } 
+
+        return sum > 0 ? false : true
       }
     },
+    methods: {
+        showBackDropAndModal() {
+            // set the true value to event bus so that backdrop opens
+            EventBus.$emit('show-side-drawer', true)
+            this.$store.state.purchasing = true
+        }
+    }
 }
 </script>
 <style scoped>

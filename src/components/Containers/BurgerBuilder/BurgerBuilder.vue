@@ -1,8 +1,6 @@
 <template>
     <div>
-        <!-- <modal show={{purchasing}}>
-
-        </modal> -->
+        <modal></modal>
         <burger></burger>
         <build-controls></build-controls>
     </div>
