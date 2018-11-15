@@ -1,13 +1,13 @@
 <template>
-    <div class="BuildControls">
+    <div class="BuildControls">d ::{{disableOrderButton}}
         <p>Current Price: <strong>Rs.{{this.$store.state.totalPrice}}</strong> </p>
         <div v-for="control in controls" :key="control.type">
             <build-control
                 :type='control.type'
-                :isDisabled="disabledInfo[control.type]"
+                :isDisabled="disableLessButton[control.type]"
             ></build-control>
         </div>
-        <button class="OrderButton">ORDER NOW</button>
+        <button class="OrderButton" :disabled="disableOrderButton">ORDER NOW</button>
     </div>
 </template>
 <script>
@@ -28,7 +28,7 @@ export default {
         }
     },
     computed: {
-      disabledInfo() {
+      disableLessButton() {
         const disabledInfo = {
           ...this.$store.state.ingredients
         }
@@ -37,6 +37,14 @@ export default {
           disabledInfo[key] = disabledInfo[key] <= 0; // true or false
         }
         return disabledInfo
+      },
+      disableOrderButton() {
+        let sum = 0
+        for (let key in this.$store.state.ingredients) {
+            sum += this.$store.state.ingredients[key]
+        } 
+
+        return sum > 0 ? false : true
       }
     },
 }
