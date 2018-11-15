@@ -1,7 +1,7 @@
 <template>
     <div class="Burger">
         <burger-ingredients type="bread-top"></burger-ingredients>
-        <div v-if="transformedIngredients.length ">
+        <div v-if="transformedIngredients.length">
             <div v-for="(ingred, key) in transformedIngredients" :key="key">
                 <burger-ingredients :type="ingred"></burger-ingredients>
             </div>
@@ -14,28 +14,24 @@
 import BurgerIngredients from "./BurgerIngredients/BurgerIngredients.vue"
 export default {
     name: 'Burger',
-    props: {
-        ingredients: Object
-    },
     components: {
         'burger-ingredients': BurgerIngredients
     },
-    data() {
-        return {
-            transformedIngredients: []
-        }
-    },
-    created() {
+    computed: {
         // ingredients props is an object and we can't map objects. We can map arrays but not object
         // So we need to convert the given object in to an array
         // Object.keys() extracts keys of a given object and turns that in to an array - [salad, bacon, cheese ,meat]
-        // this.transformedIngredients = Object.keys(this.ingredients).map(ingredientKey => {
-        //     return ingredientKey
-        // })
 
-        Object.entries(this.ingredients).map(ingredient => {
-            if (ingredient[1] > 0) return this.transformedIngredients.push(ingredient[0])
-        })
+        transformedIngredients() {
+            return Object.keys(this.$store.state.ingredients).map(ingredientKey => { 
+                return [...Array(this.$store.state.ingredients[ingredientKey])].map((_, index) => { 
+                    return ingredientKey
+                })
+            })
+            .reduce((arr, el) => {
+                return arr.concat(el)
+            }, [])
+        }
     }
 }
 </script>
