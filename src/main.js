@@ -7,6 +7,8 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+window.BASE_URL = 'http://localhost:3000'
+
 new Vue({
     store,
     router,
