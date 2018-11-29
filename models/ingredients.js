@@ -44,6 +44,10 @@ const ingredientSchema = new mongoose.Schema({
     totalPrice: {
         type: Number,
         default: 20
+    },
+    orderedBy: {
+        type: String,
+        required: true
     }
 })
 
