@@ -30,6 +30,18 @@ router.post('/', (req, res) => {
     })
 })
 
+// Find one Ingredient
+router.get('/:id', (req, res) => {
+    Ingredients.findById(req.params.id)
+    .then(result => res.send(result))
+    .catch(err => {
+        res.status(404).json({
+            message: 'No Ingredients Found Of Given Id',
+            err: err
+        })
+    })
+})
+
 // update ordered ingredients
 router.put('/:id', (req, res) => {
     Ingredients.findByIdAndUpdate(req.params.id, req.body.payload)
