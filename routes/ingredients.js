@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
 })
 
 // update ordered ingredients
-router.post('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     Ingredients.findByIdAndUpdate(req.params.id, req.body.payload)
     .then(result => res.send({
         message: 'Updated Successfully',
@@ -40,6 +40,21 @@ router.post('/:id', (req, res) => {
     .catch(err => {
         res.status(500).json({
             message: 'Can Not Update Ordered Ingredients. Something Bad Happened',
+            err: err
+        })
+    })
+})
+
+// Delete ordered Ingredients
+router.delete('/:id', (req, res) => {
+    Ingredients.findByIdAndDelete(req.params.id)
+    .then(result => res.send({
+        message: 'Deleted Successfully',
+        result: result
+    }))
+    .catch(err => {
+        res.status(500).json({
+            message: 'Can Not Delete Ordered Ingredients. Something Bad Happened',
             err: err
         })
     })
