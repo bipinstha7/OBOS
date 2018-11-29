@@ -9,9 +9,22 @@ router.get('/', (req, res) => {
     .then(result => res.send(result))
     .catch(err => {
         res.status(404).json({
-            message: 'No ingredients found',
+            message: 'No Ingredients Found',
             err: err
         })
     })
 })
 
+// post or store ordered ingredients
+router.post('/', (req, res) => {
+    Ingredients.create(req.body.payload)
+    .then(result => res.send({
+        message: 'Created Successfully'
+    }))
+    .catch(result => {
+        res.status(500).json({
+            message: 'Can Not Store Ordered Ingredients. Something Bad Happened',
+            err: err
+        })
+    })
+})
