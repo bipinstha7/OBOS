@@ -10,6 +10,8 @@ mongoose
 	.then(() => console.log('mongodb/mlab connected'))
 	.catch(err => console.log('Error connecting mongodb/mlab:', err))
 
+// Express bodyparser
+app.use(Express.json())
 
 app.use('/ingredients', ingredientsRouter)
 
