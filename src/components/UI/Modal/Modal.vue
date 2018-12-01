@@ -26,6 +26,12 @@
 				<strong>Total Price: {{this.$store.state.totalPrice}}</strong>
 			</p>
 			<p>Continue to Checkout?</p>
+			<small v-if="error" class="error">{{error}}</small>
+			<label for="email" class="email">
+				<input type="text" id="email" required v-model="email">
+				<span class="label">Enter Your Email </span>
+				<span class="border"></span>
+			</label>
 			<Button class="Danger" @click=purchaseCanceled>CANCEL</Button>
 			<Button class="Success" @click=purchaseContinued>CONTINUE</Button>
 		</div>
@@ -41,7 +47,9 @@ export default {
 	},
 	data() {
 		return {
-			ingredientPrice: this.$store.state.INGREDIENT_PRICES
+			ingredientPrice: this.$store.state.INGREDIENT_PRICES,
+			email: '',
+			error: '',
 		}
 	},
 	computed: {
@@ -59,11 +67,33 @@ export default {
 			this.$store.state.purchasing = false
 		},
 		purchaseContinued() {
-			alert('Work needs to be done in next project')
+			let instance = this
+			const emailSchema = Joi.object().keys({
+				email: Joi.string().email({ minDomainAtoms: 2 })
+			})
+			const result = Joi.validate({ email: this.email }, emailSchema);
+			if (result.error) {
+				if (!this.email) {
+					return this.error = "You must enter your email address"
+				} else {
+					return this.error = "Invalid email address"
+				}
+			}
+			axios.post(`${BASE_URL}/ingredients`, {
+				payload: {
+					ingredients: this.$store.state.ingredients,
+					price: this.$store.state.INGREDIENT_PRICES,
+					totalPrice: this.$store.state.totalPrice,
+					email: instance.email
+				}
+			})
+			.then(result => console.log('result', result))
+			.catch(err => console.log('can not store purchased data', err))
 		}
 	}
 }
 </script>
+
 <style scoped>
 .Modal {
 	position: fixed;
@@ -87,28 +117,97 @@ export default {
 }
 
 Button {
-  background-color: transparent;
-  border: none;
-  color: white;
-  outline: none;
-  cursor: pointer;
-  font: inherit;
-  padding: 10px;
-  margin: 10px;
-  font-weight: bold;
+	background-color: transparent;
+	border: none;
+	color: white;
+	outline: none;
+	cursor: pointer;
+	font: inherit;
+	padding: 10px;
+	margin: 10px;
+	font-weight: bold;
 }
 
 Button:first-of-type {
-  margin-left: 0;
-  padding-left: 0;
+	margin-left: 0;
+	padding-left: 0;
 }
 
 .Success {
-  color: #5C9210;
+	color: #5C9210;
 }
 
 .Danger {
-  color: #944317;
+	color: #944317;
 }
-</style>
 
+.error {
+	color: red;
+}
+
+* {
+	box-sizing: border-box;
+}	
+.email {
+	position: relative;
+	margin: auto;
+	width: 100%;
+	max-width: 280px;
+}
+.email .label {
+	position: absolute;
+	top: 40px;
+	left: 0;
+	font-size: 16px;
+	color: #9098a9;
+	font-weight: 500;
+	transform-origin: 0 0;
+	transition: all 0.2s ease;
+}
+.email .border {
+	position: absolute;
+	bottom: -17px;
+	left: 0;
+	height: 2px;
+	width: 100%;
+	background: #07f;
+	transform: scaleX(0);
+	transform-origin: 0 0;
+	transition: all 0.15s ease;
+}
+.email input {
+	-webkit-appearance: none;
+	width: 100%;
+	border: 0;
+	font-family: inherit;
+	padding: 12px 0;
+	height: 48px;
+	font-size: 16px;
+	font-weight: 500;
+	border-bottom: 2px solid #c8ccd4;
+	background: none;
+	border-radius: 0;
+	color: #223254;
+	transition: all 0.15s ease;
+}
+.email input:hover {
+  	background: rgba(34,50,84,0.03);
+}
+.email input:not(:placeholder-shown) + span {
+	color: #5a667f;
+	transform: translateY(-26px) scale(0.75);
+}
+.email input:focus {
+	background: none;
+	outline: none;
+}
+.email input:focus + span, 
+.email input:valid + span {
+	color: #07f;
+	transform: translateY(-56px) scale(0.75);
+}
+.email input:focus + span + .border {
+	transform: scaleX(1);
+}
+
+</style>
