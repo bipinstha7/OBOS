@@ -1,4 +1,5 @@
 const Ingredients = require('../models/ingredients')
+const Joi = require('joi')
 
 const express = require('express')
 const router = express.Router()
@@ -17,6 +18,16 @@ router.get('/', (req, res) => {
 
 // post or store ordered ingredients
 router.post('/', (req, res) => {
+
+    const emailSchema = Joi.object().keys({
+        email: Joi.string().email({ minDomainAtoms: 2 })
+    })
+    const result = Joi.validate({ email: req.body.payload.email }, emailSchema);
+    if (result.error) {
+        res.status(400).send(result.error.details[0].message)
+        return
+    }
+            
     const { salad, cheese, meat, bacon } = req.body.payload.ingredients
     const { salad: saladPrice, cheese: cheesePrice, meat: meatPrice, bacon: baconPrice } = req.body.payload.price
 
@@ -29,11 +40,11 @@ router.post('/', (req, res) => {
         'meat.price': meatPrice,
         'bacon.total': bacon,
         'bacon.price': baconPrice,
-        ordered_by: req.body.email,
+        ordered_by: req.body.payload.email,
         total_price: req.body.payload.totalPrice
     }
 
-    // console.log('ingredients', ingredients)
+    console.log('ingredients', ingredients)
     Ingredients.create(ingredients)
     .then(result => res.send({
         message: 'Created Successfully',
