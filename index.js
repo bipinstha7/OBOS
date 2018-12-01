@@ -6,12 +6,18 @@ const ingredientsRouter = require('./routes/ingredients')
 
 // connect to mongodb/mlab
 mongoose
-	.connect('mongodb://obos:obos1212@ds119024.mlab.com:19024/obos')
+	.connect('mongodb://obos:obos1212@ds119024.mlab.com:19024/obos',  {useNewUrlParser: true })
 	.then(() => console.log('mongodb/mlab connected'))
 	.catch(err => console.log('Error connecting mongodb/mlab:', err))
 
 // Express bodyparser
-app.use(Express.json())
+app.use(express.json())
+
+app.use((req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*")
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+	next()
+})
 
 app.use('/ingredients', ingredientsRouter)
 
