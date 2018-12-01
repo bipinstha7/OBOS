@@ -17,12 +17,29 @@ router.get('/', (req, res) => {
 
 // post or store ordered ingredients
 router.post('/', (req, res) => {
-    Ingredients.create(req.body.payload)
+    const { salad, cheese, meat, bacon } = req.body.payload.ingredients
+    const { salad: saladPrice, cheese: cheesePrice, meat: meatPrice, bacon: baconPrice } = req.body.payload.price
+
+    const ingredients = {
+        'salad.total': salad,
+        'salad.price': saladPrice,
+        'cheese.total': cheese,
+        'cheese.price': cheesePrice,
+        'meat.total': meat,
+        'meat.price': meatPrice,
+        'bacon.total': bacon,
+        'bacon.price': baconPrice,
+        ordered_by: req.body.email,
+        total_price: req.body.payload.totalPrice
+    }
+
+    // console.log('ingredients', ingredients)
+    Ingredients.create(ingredients)
     .then(result => res.send({
         message: 'Created Successfully',
         result: result
     }))
-    .catch(result => {
+    .catch(err => {
         res.status(500).json({
             message: 'Can Not Store Ordered Ingredients. Something Bad Happened',
             err: err
@@ -71,3 +88,5 @@ router.delete('/:id', (req, res) => {
         })
     })
 })
+
+module.exports = router
