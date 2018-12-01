@@ -88,7 +88,7 @@ export default {
 				}
 			})
 			.then(result => console.log('result', result))
-			.catch(err => console.log('can not store purchased data', err))
+			.catch(err => this.error = err.response.data)
 		}
 	}
 }
