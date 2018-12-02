@@ -27,18 +27,20 @@
 			</p>
 			<p>Continue to Checkout?</p>
 			<small v-if="error" class="error">{{error}}</small>
-			<label for="email" class="email">
-				<input type="text" id="email" required v-model="email">
-				<span class="label">Enter Your Email </span>
-				<span class="border"></span>
-			</label>
+			<div>
+				<label for="email" class="email">
+					<input type="text" id="email" required v-model="email">
+					<span class="label">Enter Your Email </span>
+					<span class="border"></span>
+				</label>
+			</div>
 			<Button class="Danger" @click=purchaseCanceled>CANCEL</Button>
 			<Button class="Success" @click=purchaseContinued>CONTINUE</Button>
 		</div>
 		<div class="Modal" :style="transform" v-if="purchased">
-			<h1>Your order has beed placed.</h1>
-			<p>You'll be notified sortly</p>
-			<router-link to="/order">See My Order</router-link>
+			<h4>Your order has beed placed.</h4>
+			<p>You'll be notified shortly.</p>
+			<router-link to="/order">See All Orders</router-link>
 		</div>
 	</div>
 </template>
@@ -96,6 +98,9 @@ export default {
 			.then(result => instance.purchased = true)
 			.catch(err => this.error = err.response.data)
 		}
+	},
+	beforeDestroy() {
+		EventBus.$emit('show-side-drawer', false)
 	}
 }
 </script>
@@ -158,11 +163,11 @@ Button:first-of-type {
 	position: relative;
 	margin: auto;
 	width: 100%;
-	max-width: 280px;
+	max-width: 330px;
 }
 .email .label {
 	position: absolute;
-	top: 40px;
+	top: 50px;
 	left: 0;
 	font-size: 16px;
 	color: #9098a9;
@@ -172,7 +177,7 @@ Button:first-of-type {
 }
 .email .border {
 	position: absolute;
-	bottom: -17px;
+	bottom: 0;
 	left: 0;
 	height: 2px;
 	width: 100%;
