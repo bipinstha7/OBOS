@@ -1,29 +1,21 @@
 <template>
     <div id="app">
         <div id="nav">
-            <!-- <router-link to="/">Home</router-link> | -->
-            <!-- <router-link to="/about">About</router-link> -->
-        </div>
-        <router-view/>
+        </div>   
         <burger-layout>
-            <burger-builder></burger-builder>
-            <!-- <burger></burger> -->
+            <router-view/>
         </burger-layout>
     </div>
 </template>
 <script>
     import Layout from './components/Layout/Layout.vue'
-    // import Burger from './components/Burger/Burger.vue'
-    import BurgerBuilder from './components/Containers/BurgerBuilder/BurgerBuilder.vue'
-
     export default {
         components: {
-            'burger-layout': Layout,
-            // 'burger': Burger,
-            'burger-builder': BurgerBuilder
+            'burger-layout': Layout
         }
     }
 </script>
+
 
 
 <style lang="scss">
