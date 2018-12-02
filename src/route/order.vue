@@ -1,137 +1,87 @@
 <template>
-	<div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
-				<div class="table100">
-					<table>
-						<thead>
-							<tr class="table100-head">
-								<th class="column1">Date</th>
-								<th class="column2">Order ID</th>
-								<th class="column3">Name</th>
-								<th class="column4">Price</th>
-								<th class="column5">Quantity</th>
-								<th class="column6">Total</th>
-							</tr>
-						</thead>
-						<tbody>
-								<tr>
-									<td class="column1">2017-09-29 01:22</td>
-									<td class="column2">200398</td>
-									<td class="column3">iPhone X 64Gb Grey</td>
-									<td class="column4">$999.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$999.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-28 05:57</td>
-									<td class="column2">200397</td>
-									<td class="column3">Samsung S8 Black</td>
-									<td class="column4">$756.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$756.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-26 05:57</td>
-									<td class="column2">200396</td>
-									<td class="column3">Game Console Controller</td>
-									<td class="column4">$22.00</td>
-									<td class="column5">2</td>
-									<td class="column6">$44.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-25 23:06</td>
-									<td class="column2">200392</td>
-									<td class="column3">USB 3.0 Cable</td>
-									<td class="column4">$10.00</td>
-									<td class="column5">3</td>
-									<td class="column6">$30.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-24 05:57</td>
-									<td class="column2">200391</td>
-									<td class="column3">Smartwatch 4.0 LTE Wifi</td>
-									<td class="column4">$199.00</td>
-									<td class="column5">6</td>
-									<td class="column6">$1494.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-23 05:57</td>
-									<td class="column2">200390</td>
-									<td class="column3">Camera C430W 4k</td>
-									<td class="column4">$699.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$699.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-22 05:57</td>
-									<td class="column2">200389</td>
-									<td class="column3">Macbook Pro Retina 2017</td>
-									<td class="column4">$2199.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$2199.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-21 05:57</td>
-									<td class="column2">200388</td>
-									<td class="column3">Game Console Controller</td>
-									<td class="column4">$999.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$999.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-19 05:57</td>
-									<td class="column2">200387</td>
-									<td class="column3">iPhone X 64Gb Grey</td>
-									<td class="column4">$999.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$999.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-18 05:57</td>
-									<td class="column2">200386</td>
-									<td class="column3">iPhone X 64Gb Grey</td>
-									<td class="column4">$999.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$999.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-22 05:57</td>
-									<td class="column2">200389</td>
-									<td class="column3">Macbook Pro Retina 2017</td>
-									<td class="column4">$2199.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$2199.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-21 05:57</td>
-									<td class="column2">200388</td>
-									<td class="column3">Game Console Controller</td>
-									<td class="column4">$999.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$999.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-19 05:57</td>
-									<td class="column2">200387</td>
-									<td class="column3">iPhone X 64Gb Grey</td>
-									<td class="column4">$999.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$999.00</td>
-								</tr>
-								<tr>
-									<td class="column1">2017-09-18 05:57</td>
-									<td class="column2">200386</td>
-									<td class="column3">iPhone X 64Gb Grey</td>
-									<td class="column4">$999.00</td>
-									<td class="column5">1</td>
-									<td class="column6">$999.00</td>
-								</tr>
-								
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+<div class="container mt-4">
+	<!-- <div v-if="error">{{error}}</div> -->
+	<div class="lds-dual-ring" v-if="loadingData"></div>
+	<div v-else>
+		<h4 class="jumbotron">You have following orders.</h4>
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th class="column3">Email</th>
+					<th class="column3">Salad</th>
+					<th class="column3">Cheese</th>
+					<th class="column3">Meat</th>
+					<th class="column3">Bacon</th>
+					<th class="column6">Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="order in orders" :key="order._id">
+					<td>{{order.ordered_by}}</td>
+					<td>{{order.salad.total}}</td>
+					<td>{{order.cheese.total}}</td>
+					<td>{{order.meat.total}}</td>
+					<td>{{order.bacon.total}}</td>
+					<td>{{order.total_price}}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+</div>
 </template>
+<script>
+import { EventBus } from "../event-bus.js"
+export default {
+	data() {
+		return {
+			loadingData: true,
+			orders: [],
+			error: ''
+		}
+	},
+	created() {
+		let instance = this
+		axios.get(`${BASE_URL}/ingredients`)
+			.then(result => {
+				// EventBus.$emit('show-side-drawer', false)
+				instance.orders = result.data
+				instance.loadingData = false
+			})
+			.catch(err => {
+				console.log('Error on fetching data', err)
+				instance.error = 'Error on fetching data. Please check your connection.'
+				instance.loadingData = false
+			})
+	},
+}
+</script>
+<style scoped>
+.lds-dual-ring {
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	margin: 25% 50%;
+}
+.lds-dual-ring:after {
+	content: " ";
+	display: block;
+	width: 46px;
+	height: 46px;
+	margin: 1px;
+	border-radius: 50%;
+	border: 5px solid #000;
+	border-color: #000 transparent #000 transparent;
+	animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+</style>
+
+
