@@ -1,7 +1,7 @@
 <template>
     <div>
 		<backdrop></backdrop>
-		<div class="Modal" :style="transform">
+		<div class="Modal" :style="transform" v-if="!purchased">
 			<h3>Your Order</h3>
         	<p>A delicious burger with the following ingredients:</p>
 			<table>
@@ -35,6 +35,11 @@
 			<Button class="Danger" @click=purchaseCanceled>CANCEL</Button>
 			<Button class="Success" @click=purchaseContinued>CONTINUE</Button>
 		</div>
+		<div class="Modal" :style="transform" v-if="purchased">
+			<h1>Your order has beed placed.</h1>
+			<p>You'll be notified sortly</p>
+			<router-link to="/order">See My Order</router-link>
+		</div>
 	</div>
 </template>
 <script>
@@ -50,6 +55,7 @@ export default {
 			ingredientPrice: this.$store.state.INGREDIENT_PRICES,
 			email: '',
 			error: '',
+			purchased: false,
 		}
 	},
 	computed: {
@@ -87,7 +93,7 @@ export default {
 					email: instance.email
 				}
 			})
-			.then(result => console.log('result', result))
+			.then(result => instance.purchased = true)
 			.catch(err => this.error = err.response.data)
 		}
 	}
