@@ -43,6 +43,13 @@ export default new Vuex.Store({
             state.ingredients[payload] -= 1
             state.totalPrice -= state.INGREDIENT_PRICES[payload]
         },
+        resetStore (state) {
+            for (let ingredient in state.ingredients){
+                state.ingredients[ingredient] = 0
+            }
+            state.totalPrice = 20
+            state.purchasing = false
+	    }
     },
 
     actions: {
@@ -52,7 +59,8 @@ export default new Vuex.Store({
         removePriceAndIngredients({commit}, payload) {
             commit('removePriceAndIngredients', payload)
         },
+        clearAllStore({ commit }){
+			commit("resetStore")
+		}
     }
-
-
 })
