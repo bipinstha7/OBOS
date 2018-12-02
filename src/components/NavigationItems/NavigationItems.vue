@@ -1,18 +1,19 @@
 <template>
     <ul class='NavigationItems'>
         <li class="NavigationItem" @click="burgerBuilderClicked">
-            <a href="#" :class='builderActive'> 
+            <router-link to="/" :class='builderActive'> 
                 Burger Builder
-            </a>
+            </router-link>
         </li>
         <li class="NavigationItem" @click="checkoutClicked">
-            <a href="#" :class='checkoutActive'> 
+            <router-link to="/order" :class='checkoutActive'> 
                 Checkout
-            </a>
+            </router-link>
         </li>
     </ul>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
     name: "NavigationItems",
     data() {
@@ -25,15 +26,17 @@ export default {
         this.builderActive = 'active'
     },
     methods: {
+        ...mapActions([
+            'clearAllStore',
+        ]),
         burgerBuilderClicked() {
             this.builderActive = 'active',
             this.checkoutActive = ''
+            this.clearAllStore()
         },
         checkoutClicked() {
             this.checkoutActive = 'active',
             this.builderActive = ''
-            
-            alert('Work needs to be done in next project')
         },
     },
 }
