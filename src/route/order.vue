@@ -13,6 +13,7 @@
 					<th class="column3">Meat</th>
 					<th class="column3">Bacon</th>
 					<th class="column6">Total</th>
+					<th class="column6">Edit/Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,6 +24,10 @@
 					<td>{{order.meat.total}}</td>
 					<td>{{order.bacon.total}}</td>
 					<td>{{order.total_price}}</td>
+					<td>
+						<span class="badge badge-warning" @click="editOrder(order._id)">edit</span>
+						<span class="badge badge-danger" @click="deleteOrder(order._id)">delete</span>
+					</td>
 				</tr>
 			</tbody>
 		</table>
