@@ -58,6 +58,19 @@ export default {
 				instance.loadingData = false
 			})
 	},
+	methods: {
+		deleteOrder(id) {
+			axios.delete(`ingredients/${id}`)
+				.then(result => res.status(200).send({
+					message: 'Order Deleted Successfully',
+					result: result
+				}))	
+				.catch(err => res.status(500).send({
+					message: 'Can not delete the order. Something bad happened',
+					err: err
+				}))
+		}
+	}
 }
 </script>
 <style scoped>
