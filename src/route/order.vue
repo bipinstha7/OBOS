@@ -25,11 +25,14 @@
 					<td>{{order.bacon.total}}</td>
 					<td>{{order.total_price}}</td>
 					<td>
-						<span class="badge badge-warning" @click="editOrder(order._id)">edit</span>
+						<router-link to="/edit">
+							<span class="badge badge-warning" @click="editOrder(order._id)">edit</span>
+						</router-link>
 						<span class="badge badge-danger" @click="deleteOrder(order._id)">delete</span>
 					</td>
 				</tr>
-			</tbody>
+				<span class="badge badge-warning" @click="editOrder(order._id)">edit</span></tbody>
+
 		</table>
 	</div>
 </div>
