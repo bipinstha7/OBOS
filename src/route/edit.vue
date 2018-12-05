@@ -41,7 +41,12 @@
 export default {
 	methods: {
 		editOrder() {
-			
+			axios.put(`${BASE_URL}/ingredients/${order._id}`)
+				.then(result => res.send(result)
+				.catch(err => res.send({
+					message: 'Something Bad Happened',
+					err: err
+				}))
 		}
 	}
 }
