@@ -52,7 +52,7 @@ export default {
     },
 	methods: {
 		editOrder() {
-			axios.put(`${BASE_URL}/ingredients/${order._id}`)
+			axios.put(`${BASE_URL}/ingredients/${order._id}`, {ingredients, email})
 				.then(result => res.send(result)
 				.catch(err => res.send({
 					message: 'Something Bad Happened',
