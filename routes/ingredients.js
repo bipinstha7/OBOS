@@ -72,6 +72,14 @@ router.get('/:id', (req, res) => {
 
 // update ordered ingredients
 router.put('/:id', (req, res) => {
+    let {salad, cheese, meat, bacon} = req.body.ingredients
+    let payload = {
+        salad: salad,
+        cheese: cheese,
+        meat: meat,
+        bacon: bacon,
+        email: req.body.email
+    }
     Ingredients.findByIdAndUpdate(req.params.id, req.body.payload)
     .then(result => res.send({
         message: 'Updated Successfully',
