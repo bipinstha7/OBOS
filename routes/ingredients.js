@@ -75,9 +75,13 @@ router.put('/:id', (req, res) => {
     let {salad, cheese, meat, bacon} = req.body.ingredients
     let payload = {
         'salad.total': salad,
+        'salad.price': salad * this.$store.INGREDIENT_PRICES.salad,
         'cheese.total': cheese,
+        'salad.price': cheese * this.$store.INGREDIENT_PRICES.cheese,
         'meat.total': meat,
+        'salad.price': meat * this.$store.INGREDIENT_PRICES.meat,
         'bacon.total': bacon,
+        'salad.price': bacon * this.$store.INGREDIENT_PRICES.bacon,
         email: req.body.email
     }
     Ingredients.findByIdAndUpdate(req.params.id, req.body.payload)
