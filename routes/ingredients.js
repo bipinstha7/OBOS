@@ -84,7 +84,7 @@ router.put('/:id', (req, res) => {
         'salad.price': bacon * this.$store.INGREDIENT_PRICES.bacon,
         email: req.body.email
     }
-    Ingredients.findByIdAndUpdate(req.params.id, req.body.payload)
+    Ingredients.findByIdAndUpdate(req.params.id, payload)
     .then(result => res.send({
         message: 'Updated Successfully',
         result: result
