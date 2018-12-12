@@ -56,7 +56,7 @@ export default {
 				.then(result => res.send(result)
 				.catch(err => res.send({
 					message: 'Something Bad Happened',
-					err: err
+					err: err.message
 				}))
 		}
 	}
