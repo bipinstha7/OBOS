@@ -65,7 +65,7 @@ router.get('/:id', (req, res) => {
     .catch(err => {
         res.status(404).json({
             message: 'No Ingredients Found Of Given Id',
-            err: err
+            err: err.message
         })
     })
 })
