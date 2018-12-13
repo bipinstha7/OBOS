@@ -70,7 +70,7 @@ export default {
 					result: result
 				}))	
 				.catch(err => res.status(500).send({
-					message: 'Can not delete the order. Something bad happened',
+					message: 'Can not delete your order. Something bad happened',
 					err: err
 				}))
 		}
