@@ -18,9 +18,9 @@ export default {
         'burger-ingredients': BurgerIngredients
     },
     computed: {
-        // ingredients props is an object and we can't map objects. We can map arrays but not object
-        // So we need to convert the given object in to an array
-        // Object.keys() extracts keys of a given object and turns that in to an array - [salad, bacon, cheese ,meat]
+        /* ingredients props is an object and we can't map objects. We can map arrays but not object
+        So we need to convert the given object in to an array
+        Object.keys() extracts keys of a given object and turns that in to an array - [salad, bacon, cheese ,meat] */
 
         transformedIngredients() {
             return Object.keys(this.$store.state.ingredients).map(ingredientKey => { 
