@@ -51,7 +51,7 @@ export default {
     },
     methods: {
         showBackDropAndModal() {
-            // set the true value to event bus so that backdrop opens
+            /* set the true value to event bus so that backdrop opens */
             EventBus.$emit('show-side-drawer', true)
             this.$store.state.purchasing = true
         }
