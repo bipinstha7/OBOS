@@ -32,6 +32,8 @@ export default {
         burgerBuilderClicked() {
             this.builderActive = 'active',
             this.checkoutActive = ''
+
+            // clear the ingredients and price from the store
             this.clearAllStore()
         },
         checkoutClicked() {
