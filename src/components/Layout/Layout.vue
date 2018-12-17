@@ -19,8 +19,3 @@
         },
     }
 </script>
-<style scoped>
-/* .Content {
-    margin-top: 72px;
-} */
-</style>
