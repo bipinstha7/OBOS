@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import HelloWorld from '@/components/Home.vue'
 
 describe('Heome.vue', () => {
-    it('renders props.msg when passed', () => {
+    it('loads burger builder components', () => {
         const msg = 'new message'
         const wrapper = shallowMount(HelloWorld, {
             propsData: { msg }
