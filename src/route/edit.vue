@@ -47,7 +47,7 @@ export default {
                 meat: 0,
                 bacon: 0
             },
-            email: ''
+            email: '',
         }
     },
 	methods: {
