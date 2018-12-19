@@ -4,6 +4,8 @@ const Joi = require('joi')
 const express = require('express')
 const router = express.Router()
 
+// USE GENERIC ERROR MIDDLEWARE LATER
+
 // find all
 router.get('/', (req, res) => {
     Ingredients.find()
