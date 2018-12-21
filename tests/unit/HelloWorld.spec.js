@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import HelloWorld from '@/components/Home.vue'
 
-describe('Heome.vue', () => {
+describe('Home.vue', () => {
     it('loads burger builder components', () => {
         const msg = 'new message'
         const wrapper = shallowMount(HelloWorld, {
