@@ -23,6 +23,7 @@ app.use((req, res, next) => {
 	next()
 })
 
+// Route
 app.use('/ingredients', ingredientsRouter)
 
 const port = process.env.PORT || 3000
