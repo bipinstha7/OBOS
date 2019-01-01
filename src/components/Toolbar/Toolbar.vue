@@ -1,24 +1,24 @@
 <template>
-    <header class="Toolbar">
+	<header class="Toolbar">
 		<drawer-toggle></drawer-toggle>
 		<burger-logo class="Logo"></burger-logo>
 		<nav class="DesktopOnly">
 			<navigation-items></navigation-items>
 		</nav>
-    </header>
+	</header>
 </template>
 <script>
-import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle.vue'
-import Logo from '../Logo/Logo.vue'
-import NavigationItems from '../NavigationItems/NavigationItems.vue'
-export default {
-	name: 'Toolbar',
-	components: {
-		'drawer-toggle': DrawerToggle,
-		'burger-logo': Logo,
-		'navigation-items': NavigationItems
-	}	
-}
+	import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle.vue'
+	import Logo from '../Logo/Logo.vue'
+	import NavigationItems from '../NavigationItems/NavigationItems.vue'
+	export default {
+		name: 'Toolbar',
+		components: {
+			'drawer-toggle': DrawerToggle,
+			'burger-logo': Logo,
+			'navigation-items': NavigationItems
+		}
+	}
 </script>
 
 <style scoped>
@@ -38,15 +38,15 @@ export default {
 }
 
 .Toolbar nav {
-  	height: 100%;
+	height: 100%;
 }
 
 .Logo {
- 	 height: 80%;
+	height: 80%;
 }
 
 @media (max-width: 499px) {
-	.DesktopOnly{
+	.DesktopOnly {
 		display: none;
 	}
 }
