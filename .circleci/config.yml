@@ -27,7 +27,7 @@ jobs:
       # - run:
       #     name: Run unit tests
       #     command: |
-      #       python3 -m venv venv
+      #       python3 -m venv ven
       #       . venv/bin/activate
       #       python app/tests.py
       # - setup_remote_docker
