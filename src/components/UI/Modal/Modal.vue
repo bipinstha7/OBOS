@@ -1,9 +1,9 @@
 <template>
-    <div>
+	<div>
 		<backdrop></backdrop>
 		<div class="Modal" :style="transform" v-if="!purchased">
 			<h3>Your Order</h3>
-        	<p>A delicious burger with the following ingredients:</p>
+			<p>A delicious burger with the following ingredients:</p>
 			<table>
 				<thead>
 					<th>Ingredient</th>
@@ -12,16 +12,16 @@
 				</thead>
 				<tbody>
 					<tr v-for="ingredient in Object.entries(this.$store.state.ingredients)" :key="ingredient.key">
-            			<td>{{ingredient[0]}}</td>
+						<td>{{ingredient[0]}}</td>
 						<td>{{ingredient[1]}}</td>
 						<td>{{ingredientPrice[ingredient[0]] * ingredient[1]}}</td>
 					</tr>
 				</tbody>
 			</table>
-				<!-- <li v-for="ingredient in Object.entries(this.$store.state.ingredients)" :key="ingredient.key">
+			<!-- <li v-for="ingredient in Object.entries(this.$store.state.ingredients)" :key="ingredient.key">
             		{{ingredient[0]}}: {{ingredient[1]}}
         		</li>
-			</ul> -->
+			</ul>-->
 			<p>
 				<strong>Total Price: {{this.$store.state.totalPrice}}</strong>
 			</p>
@@ -30,12 +30,12 @@
 			<div>
 				<label for="email" class="email">
 					<input type="text" id="email" required v-model="email">
-					<span class="label">Enter Your Email </span>
+					<span class="label">Enter Your Email</span>
 					<span class="border"></span>
 				</label>
 			</div>
-			<Button class="Danger" @click=purchaseCanceled>CANCEL</Button>
-			<Button class="Success" @click=purchaseContinued>CONTINUE</Button>
+			<Button class="Danger" @click="purchaseCanceled">CANCEL</Button>
+			<Button class="Success" @click="purchaseContinued">CONTINUE</Button>
 		</div>
 		<div class="Modal" :style="transform" v-if="purchased">
 			<h4>Your order has beed placed.</h4>
@@ -45,64 +45,64 @@
 	</div>
 </template>
 <script>
-import Backdrop from '../Backdrop/Backdrop.vue'
-import { EventBus } from "../../../event-bus.js"
-export default {
-	name: "Modal",
-	components: {
-		'backdrop': Backdrop
-	},
-	data() {
-		return {
-			ingredientPrice: this.$store.state.INGREDIENT_PRICES,
-			email: '',
-			error: '',
-			purchased: false,
-		}
-	},
-	computed: {
-		transform() {
-			if (this.$store.state.purchasing) {
-				return 'transform: translateY(0); opacity: 1;'
-			} else {
-				return 'transform: translateY(-100vh); opacity: 0;'
+	import Backdrop from '../Backdrop/Backdrop.vue'
+	import { EventBus } from "../../../event-bus.js"
+	export default {
+		name: "Modal",
+		components: {
+			'backdrop': Backdrop
+		},
+		data() {
+			return {
+				ingredientPrice: this.$store.state.INGREDIENT_PRICES,
+				email: '',
+				error: '',
+				purchased: false,
 			}
 		},
-	},
-	methods: {
-		purchaseCanceled() {
-			EventBus.$emit('show-side-drawer', false)
-			this.$store.state.purchasing = false
-		},
-		purchaseContinued() {
-			let instance = this
-			const emailSchema = Joi.object().keys({
-				email: Joi.string().email({ minDomainAtoms: 2 })
-			})
-			const result = Joi.validate({ email: this.email }, emailSchema);
-			if (result.error) {
-				if (!this.email) {
-					return this.error = "You must enter your email address"
+		computed: {
+			transform() {
+				if (this.$store.state.purchasing) {
+					return 'transform: translateY(0); opacity: 1;'
 				} else {
-					return this.error = "Invalid email address"
+					return 'transform: translateY(-100vh); opacity: 0;'
 				}
+			},
+		},
+		methods: {
+			purchaseCanceled() {
+				EventBus.$emit('show-side-drawer', false)
+				this.$store.state.purchasing = false
+			},
+			purchaseContinued() {
+				let instance = this
+				const emailSchema = Joi.object().keys({
+					email: Joi.string().email({ minDomainAtoms: 2 })
+				})
+				const result = Joi.validate({ email: this.email }, emailSchema);
+				if (result.error) {
+					if (!this.email) {
+						return this.error = "You must enter your email address"
+					} else {
+						return this.error = "Invalid email address"
+					}
+				}
+				axios.post(`${BASE_URL}/ingredients`, {
+					payload: {
+						ingredients: this.$store.state.ingredients,
+						price: this.$store.state.INGREDIENT_PRICES,
+						totalPrice: this.$store.state.totalPrice,
+						email: instance.email
+					}
+				})
+					.then(result => instance.purchased = true)
+					.catch(err => this.error = err.response.data)
 			}
-			axios.post(`${BASE_URL}/ingredients`, {
-				payload: {
-					ingredients: this.$store.state.ingredients,
-					price: this.$store.state.INGREDIENT_PRICES,
-					totalPrice: this.$store.state.totalPrice,
-					email: instance.email
-				}
-			})
-			.then(result => instance.purchased = true)
-			.catch(err => this.error = err.response.data)
+		},
+		beforeDestroy() {
+			EventBus.$emit('show-side-drawer', false)
 		}
-	},
-	beforeDestroy() {
-		EventBus.$emit('show-side-drawer', false)
 	}
-}
 </script>
 
 <style scoped>
@@ -127,7 +127,7 @@ export default {
 	}
 }
 
-Button {
+button {
 	background-color: transparent;
 	border: none;
 	color: white;
@@ -139,13 +139,13 @@ Button {
 	font-weight: bold;
 }
 
-Button:first-of-type {
+button:first-of-type {
 	margin-left: 0;
 	padding-left: 0;
 }
 
 .Success {
-	color: #5C9210;
+	color: #5c9210;
 }
 
 .Danger {
@@ -158,7 +158,7 @@ Button:first-of-type {
 
 * {
 	box-sizing: border-box;
-}	
+}
 .email {
 	position: relative;
 	margin: auto;
@@ -202,7 +202,7 @@ Button:first-of-type {
 	transition: all 0.15s ease;
 }
 .email input:hover {
-  	background: rgba(34,50,84,0.03);
+	background: rgba(34, 50, 84, 0.03);
 }
 .email input:not(:placeholder-shown) + span {
 	color: #5a667f;
@@ -212,7 +212,7 @@ Button:first-of-type {
 	background: none;
 	outline: none;
 }
-.email input:focus + span, 
+.email input:focus + span,
 .email input:valid + span {
 	color: #07f;
 	transform: translateY(-56px) scale(0.75);
@@ -220,5 +220,4 @@ Button:first-of-type {
 .email input:focus + span + .border {
 	transform: scaleX(1);
 }
-
 </style>
