@@ -6,16 +6,16 @@ import Home from './components/Home.vue'
 Vue.use(Router)
 
 export default new Router({
-    routes: [
-        {
-            path: '/',
-            name: 'Home',
-            component: Home
-        },
-        {
-            path: '/order',
-            name: 'order',
-            component: Order
-        }
-    ]
+	routes: [
+		{
+			path: '/',
+			name: 'Home',
+			component: Home,
+		},
+		{
+			path: '/order',
+			name: 'order',
+			component: Order,
+		},
+	],
 })
