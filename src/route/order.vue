@@ -31,7 +31,6 @@
 							<span class="badge badge-danger" @click="deleteOrder(order._id)">delete</span>
 						</td>
 					</tr>
-					<span class="badge badge-warning" @click="editOrder(order._id)">edit</span>
 				</tbody>
 			</table>
 		</div>
