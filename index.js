@@ -6,7 +6,10 @@ const ingredientsRouter = require('./routes/ingredients')
 
 // connect to mongodb/mlab
 mongoose
-	.connect('mongodb://obos:obos1212@ds119024.mlab.com:19024/obos',  {useNewUrlParser: true })
+	.connect(
+		'mongodb://obos:obos1212@ds119024.mlab.com:19024/obos',
+		{ useNewUrlParser: true }
+	)
 	.then(() => console.log('mongodb/mlab connected'))
 	.catch(err => console.log('Error connecting mongodb/mlab:', err))
 
@@ -14,12 +17,15 @@ mongoose
 app.use(express.json())
 
 // set static folder
-app.use(express.static(__dirname + "/dist"));
+app.use(express.static(__dirname + '/dist'))
 
 // CORS
 app.use((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "*")
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+	res.header('Access-Control-Allow-Origin', '*')
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept'
+	)
 	next()
 })
 
