@@ -3,7 +3,7 @@
 		<!-- <div v-if="error">{{error}}</div> -->
 		<div class="lds-dual-ring" v-if="loadingData"></div>
 		<div v-else>
-			<h4 class="jumbotron">You have following orders.</h4>
+			<h4 class="jumbotron">Orders.</h4>
 			<table class="table table-striped">
 				<thead class="thead-dark">
 					<tr>
