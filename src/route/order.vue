@@ -13,7 +13,7 @@
 						<th class="column3">Meat</th>
 						<th class="column3">Bacon</th>
 						<th class="column6">Total Amount</th>
-						<th class="column6">Edit/Delete</th>
+						<th class="column6">Edit / Delete</th>
 					</tr>
 				</thead>
 				<tbody>
