@@ -7,13 +7,13 @@
 			<table class="table table-striped">
 				<thead class="thead-dark">
 					<tr>
-						<th class="column3">Email</th>
-						<th class="column3">Salad</th>
-						<th class="column3">Cheese</th>
-						<th class="column3">Meat</th>
-						<th class="column3">Bacon</th>
-						<th class="column6">Total Amount</th>
-						<th class="column6">Edit / Delete</th>
+						<th class="column3"> Email </th>
+						<th class="column3"> Salad </th>
+						<th class="column3"> Cheese </th>
+						<th class="column3"> Meat </th>
+						<th class="column3"> Bacon </th>
+						<th class="column6"> Total Amount </th>
+						<th class="column6"> Edit / Delete </th>
 					</tr>
 				</thead>
 				<tbody>
