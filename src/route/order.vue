@@ -26,9 +26,9 @@
 						<td>{{order.total_price}}</td>
 						<td>
 							<router-link to="/edit">
-								<span class="badge badge-warning" @click="editOrder(order._id)">edit</span>
+								<span class="badge badge-warning" @click="editOrder(order._id)">Edit</span>
 							</router-link>
-							<span class="badge badge-danger" @click="deleteOrder(order._id)">delete</span>
+							<span class="badge badge-danger" @click="deleteOrder(order._id)">Delete</span>
 						</td>
 					</tr>
 				</tbody>
