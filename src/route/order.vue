@@ -18,6 +18,7 @@
 				</thead>
 				<tbody>
 					<tr v-for="(order, index) in orders" :key="order._id">
+						<td>{{index}}</td>
 						<td>{{order.ordered_by}}</td>
 						<td>{{order.salad.total}}</td>
 						<td>{{order.cheese.total}}</td>
