@@ -1,6 +1,7 @@
 <template>
 	<div class="container mt-4">
 		<!-- <div v-if="error">{{error}}</div> -->
+		<!-- show loader while fetching data -->
 		<div class="lds-dual-ring" v-if="loadingData"></div>
 		<div v-else>
 			<h4 class="jumbotron">Orders</h4>
