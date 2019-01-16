@@ -8,7 +8,7 @@
 			<table class="table table-striped">
 				<thead class="thead-dark">
 					<tr>
-						<th class="column3"> Email </th>
+						<th class="column3"> Customer Email </th>
 						<th class="column3"> Salad </th>
 						<th class="column3"> Cheese </th>
 						<th class="column3"> Meat </th>
