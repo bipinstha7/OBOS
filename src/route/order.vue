@@ -72,7 +72,7 @@
 					}))
 					.catch(err => res.status(500).send({
 						message: 'Can not delete your order. Something bad happened',
-						err: err
+						err: err.message
 					}))
 			}
 		}
