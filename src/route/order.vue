@@ -64,7 +64,7 @@
 		},
 		methods: {
 			deleteOrder(id) {
-				// show some kind of model before deleting the order
+				// 	Todo: show some kind of model before deleting the order
 				axios.delete(`ingredients/${id}`)
 					.then(result => res.status(200).send({
 						message: 'Order Deleted Successfully',
