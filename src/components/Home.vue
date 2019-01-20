@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<!-- <burger-layout> -->
 		<burger-builder></burger-builder>
-		<!-- </burger-layout> -->
 	</div>
 </template>
 
