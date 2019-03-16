@@ -6,7 +6,7 @@ import { EventBus } from "../../../event-bus.js"
 export default {
     data() {
         return {
-            showSideDrawer: false
+            showSideDrawer: false,
         }
     },
     created() {
@@ -19,6 +19,7 @@ export default {
         closeSideDrawer() {
             // set the false value to event bus so that backdrop closes
             EventBus.$emit('show-side-drawer', false)
+            this.$store.state.purchasing = false
         }
     }
 }
